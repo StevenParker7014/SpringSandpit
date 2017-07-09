@@ -1,0 +1,64 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="Steve (generated)" id="1499541806011-1">
+        <createTable tableName="CHILD">
+            <column autoIncrement="true" name="pk" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="CHILDPK"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Steve (generated)" id="1499541806011-2">
+        <createTable tableName="PERSON">
+            <column autoIncrement="true" name="pk" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="PERSONPK"/>
+            </column>
+            <column name="DBLCOL" type="DOUBLE precision"/>
+            <column name="DOB" type="VARBINARY(255)"/>
+            <column name="INTCOL" type="INT"/>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="NEW_COLUMN" type="VARCHAR(255)"/>
+            <column name="SEX" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Steve (generated)" id="1499541806011-3">
+        <createTable tableName="PERSON_CHILD">
+            <column name="child_pk" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parent_pk" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Steve (generated)" id="1499541806011-4">
+        <createTable tableName="VALIDSETVALUES">
+            <column name="KEY" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Steve (generated)" id="1499541806011-5">
+        <createTable tableName="ValidSetValue_value">
+            <column name="ValidSetValue_KEY" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VALUE" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Steve (generated)" id="1499541806011-6">
+        <addPrimaryKey columnNames="KEY" constraintName="VALIDSETVALUESPK" tableName="VALIDSETVALUES"/>
+    </changeSet>
+    <changeSet author="Steve (generated)" id="1499541806011-7">
+        <addUniqueConstraint columnNames="KEY" constraintName="UC_VALIDSETVALUESKEY_COL" tableName="VALIDSETVALUES"/>
+    </changeSet>
+    <changeSet author="Steve (generated)" id="1499541806011-8">
+        <addForeignKeyConstraint baseColumnNames="child_pk" baseTableName="PERSON_CHILD" constraintName="FK8j1odml22i9h54cj71codb7xc" deferrable="false" initiallyDeferred="false" referencedColumnNames="pk" referencedTableName="CHILD"/>
+    </changeSet>
+    <changeSet author="Steve (generated)" id="1499541806011-9">
+        <addForeignKeyConstraint baseColumnNames="ValidSetValue_KEY" baseTableName="ValidSetValue_value" constraintName="FKfl47b5w5ow6925qhsbh8jamd1" deferrable="false" initiallyDeferred="false" referencedColumnNames="KEY" referencedTableName="VALIDSETVALUES"/>
+    </changeSet>
+    <changeSet author="Steve (generated)" id="1499541806011-10">
+        <addForeignKeyConstraint baseColumnNames="parent_pk" baseTableName="PERSON_CHILD" constraintName="FKo12fsgpygsog2ca86e3unqh01" deferrable="false" initiallyDeferred="false" referencedColumnNames="pk" referencedTableName="PERSON"/>
+    </changeSet>
+</databaseChangeLog>
