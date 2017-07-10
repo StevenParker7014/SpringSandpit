@@ -16,6 +16,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import uk.co.parkers.validation.annotation.ValidSetValueConstraintValidator;
+
 @Entity
 @Table(name = Person.TABLE_NAME)
 public class Person {
@@ -48,6 +50,7 @@ public class Person {
 	double dblColumn;
 
 	@Column(name = "NEW_COLUMN")
+	@ValidSetValueConstraintValidator(key="columns")
 	String newColumn;
 
 	@ManyToMany(mappedBy = "persons", cascade = CascadeType.MERGE)
